@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/s3cmd-go/config"
+	"github.com/s3cmd-go/controllers"
 	"github.com/urfave/cli/v2"
 )
 
@@ -29,28 +30,28 @@ func BuildLaunch(handler CmdHandler) func(*cli.Context) error {
 func BuildCommands(cliapp *cli.App) []*cli.Command {
 	return []*cli.Command{
 		{
-			Name:  "mb",
-			Usage: "Make bucket -- s3cmd-go mb s3://BUCKET",
-			//Action: BuildLaunch(MakeBucket),
-			Flags: cliapp.Flags,
+			Name:   "mb",
+			Usage:  "Make bucket -- s3cmd-go mb s3://BUCKET",
+			Action: BuildLaunch(controllers.MakeBucket),
+			Flags:  cliapp.Flags,
 		},
 		{
-			Name:  "rb",
-			Usage: "Remove bucket -- s3cmd-go mb s3://BUCKET",
-			//Action: BuildLaunch(RemoveBucket),
-			Flags: cliapp.Flags,
+			Name:   "rb",
+			Usage:  "Remove bucket -- s3cmd-go mb s3://BUCKET",
+			Action: BuildLaunch(controllers.RemoveBucket),
+			Flags:  cliapp.Flags,
 		},
 		{
-			Name:  "ls",
-			Usage: "List objects or buckets -- s3cmd-go ls [s3://BUCKET[/PREFIX]]",
-			//Action: BuildLaunch(ListBucket),
-			Flags: cliapp.Flags,
+			Name:   "ls",
+			Usage:  "List objects or buckets -- s3cmd-go ls [s3://BUCKET[/PREFIX]]",
+			Action: BuildLaunch(controllers.ListBucket),
+			Flags:  cliapp.Flags,
 		},
 		{
-			Name:  "la",
-			Usage: "List all object in all buckets -- s3cmd-go la",
-			//Action: BuildLaunch(ListAll),
-			Flags: cliapp.Flags,
+			Name:   "la",
+			Usage:  "List all object in all buckets -- s3cmd-go la",
+			Action: BuildLaunch(controllers.ListAll),
+			Flags:  cliapp.Flags,
 		},
 		{
 			Name:  "put",
