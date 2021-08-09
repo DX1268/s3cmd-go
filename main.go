@@ -17,7 +17,7 @@ func main() {
 
 	cliapp := cli.NewApp()
 	cliapp.Name = "s3cmd-go"
-	// cliapp.Usage = ""
+	cliapp.Usage = "Object Browsing Tool"
 	cliapp.Version = "1.0.0"
 
 	cli.VersionFlag = &cli.BoolFlag{
